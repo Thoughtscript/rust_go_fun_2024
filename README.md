@@ -19,6 +19,8 @@
 Working my way through some Rust and Actix Server documentation.
 
 1. http://localhost:8000/
+1. http://localhost:8000/echo
+1. http://localhost:8000/hey
 
 ## Resources and Links
 

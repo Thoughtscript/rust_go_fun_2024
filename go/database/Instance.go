@@ -11,7 +11,6 @@ import (
 
 var client *mongo.Client
 
-
 // Define mutex
 var dbLock = &sync.Mutex{}
 
@@ -25,7 +24,7 @@ func GetClient() *mongo.Client {
 
 	var err error
 	
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://mongodb:27017"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://testuser:testpass@mongodb:27017"))
 	log.Println("Database connection opened...")
 	if err != nil {
 		log.Fatal(err)
