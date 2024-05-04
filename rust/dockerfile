@@ -1,0 +1,13 @@
+FROM rust:alpine3.19
+
+RUN echo "Creating working dir and copying files"
+RUN mkdir /app
+WORKDIR /app
+COPY . .
+
+# https://stackoverflow.com/questions/6329887/how-to-fix-linker-error-cannot-find-crt1-o
+RUN apk add musl-dev
+
+RUN cargo build
+
+CMD [ "cargo", "run" ]

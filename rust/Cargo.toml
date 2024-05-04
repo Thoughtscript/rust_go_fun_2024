@@ -1,0 +1,8 @@
+[package]
+name = "rust_example" # the name of the package
+version = "0.1.0"    # the current version, obeying semver
+authors = ["Adam <adam.intae.gerard@protonmail.com>"]
+edition = '2021' # version of rust to use
+
+[dependencies]
+actix-web = "4"
