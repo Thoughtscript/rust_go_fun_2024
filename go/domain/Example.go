@@ -15,9 +15,9 @@ var DatabaseName = "testdatabase"
 
 // specify the field name, type, and how the field name gets serialized in JSON
 type Example struct {
-	ID		string `json:id` // not unique
-	Name	string `json:name`
-	Val		string `json:val`
+	ID      string `json:id` // not unique
+	Name    string `json:name`
+	Val     string `json:val`
 }
 
 func GetExamples() []Example {
@@ -82,7 +82,7 @@ func DeleteExample(id string) Example {
 	var example Example
 	filter := bson.D{{"id", id}}
 	if err := collection.FindOne(ctx, filter).Decode(&example); err != nil {
-    	log.Fatal(err)
+		log.Fatal(err)
 	}
 	
 	_ , err := collection.DeleteOne(ctx, filter)
@@ -114,7 +114,7 @@ func UpdateExample(id string, name string, val string) Example {
 
 	var example Example
 	if err := collection.FindOne(ctx, filter).Decode(&example); err != nil {
-    	log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	return example
