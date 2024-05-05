@@ -57,15 +57,12 @@
               }
             }
 
-            xhr.open('GET', url, true)
-            xhr.setRequestHeader('Content-Type', 'application/json')
-            xhr.withCredentials = false
-
             const user = document.getElementById("user").value
             const password = document.getElementById("password").value
-
-            xhr.setRequestHeader('User', user)
-            xhr.setRequestHeader('Password', password)
+  
+            xhr.open('GET', `${url}?user=${user}&password=${password}`, true)
+            xhr.setRequestHeader('Content-Type', 'application/json')
+            xhr.withCredentials = false
 
             xhr.send()
           })

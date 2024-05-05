@@ -23,7 +23,12 @@ func main() {
 	http.HandleFunc("/api/pool", h.QueryPool)
 	http.HandleFunc("/api/stop", h.StopJob)
 	http.HandleFunc("/api/status", h.QueryStatus)
+
 	http.HandleFunc("/api/examples", h.GetExamples)
+	http.HandleFunc("/api/example/one", h.GetExample)
+	http.HandleFunc("/api/example/update", h.UpdateExample)
+	http.HandleFunc("/api/example/delete", h.DeleteExample)
+	http.HandleFunc("/api/example/create", h.CreateExample)
 
 	go j.JobLoop()
 

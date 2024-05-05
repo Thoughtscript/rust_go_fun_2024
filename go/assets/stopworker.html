@@ -58,17 +58,13 @@
               }
             }
 
-            xhr.open('POST', url, true)
-            xhr.setRequestHeader('Content-Type', 'application/json')
-            xhr.withCredentials = false
-
             const user = document.getElementById("user").value
             const password = document.getElementById("password").value
             const uuid = document.getElementById("uuid").value
 
-            xhr.setRequestHeader('User', user)
-            xhr.setRequestHeader('Password', password)
-            xhr.setRequestHeader('Uuid', uuid)
+            xhr.open('POST', `${url}?user=${user}&password=${password}&uuid=${uuid}`, true)
+            xhr.setRequestHeader('Content-Type', 'application/json')
+            xhr.withCredentials = false
 
             xhr.send()
           })

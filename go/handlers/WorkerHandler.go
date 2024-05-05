@@ -13,14 +13,15 @@ func CreateJob(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == http.MethodPost {
-		scheduled, err := time.Parse(time.RFC3339, r.Header.Get("scheduled"))
+		url := r.URL.Query()
+		// These are case-sensitive parsings
+		user := url.Get("user")
+		password := url.Get("password")
+		cmd := url.Get("cmd")
+		scheduled, err := time.Parse(time.RFC3339, url.Get("scheduled"))
 		if err != nil {
 			log.Println("Exception encountered - please supply a valid scheduled time!")
 		}
-
-		user := r.Header.Get("user")
-		password := r.Header.Get("password")
-		cmd := r.Header.Get("cmd")
 
 		if j.VerifyPassword(user, password) {
 			worker := j.NewWorker(scheduled, cmd)
@@ -42,8 +43,9 @@ func QueryPool(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == http.MethodGet {
-		user := r.Header.Get("user")
-		password := r.Header.Get("password")
+		url := r.URL.Query()
+		user := url.Get("user")
+		password := url.Get("password")
 
 		if j.VerifyPassword(user, password) {
 			w.WriteHeader(http.StatusOK)
@@ -63,11 +65,12 @@ func QueryJob(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == http.MethodGet {
-		user := r.Header.Get("user")
-		password := r.Header.Get("password")
+		url := r.URL.Query()
+		user := url.Get("user")
+		password := url.Get("password")
 
 		if j.VerifyPassword(user, password) {
-			uid := r.Header.Get("uuid")
+			uid := url.Get("uuid")
 			w.WriteHeader(http.StatusOK)
 			err := json.NewEncoder(w).Encode(j.GetJob(uid))
 			if err != nil {
@@ -85,11 +88,12 @@ func StopJob(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == http.MethodPost {
-		user := r.Header.Get("user")
-		password := r.Header.Get("password")
+		url := r.URL.Query()
+		user := url.Get("user")
+		password := url.Get("password")
 
 		if j.VerifyPassword(user, password) {
-			uid := r.Header.Get("uuid")
+			uid := url.Get("uuid")
 			w.WriteHeader(http.StatusCreated)
 			j.StopWorker(uid)
 			err := json.NewEncoder(w).Encode(j.GetStatus(uid))
@@ -108,11 +112,12 @@ func QueryStatus(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == http.MethodGet {
-		user := r.Header.Get("user")
-		password := r.Header.Get("password")
+		url := r.URL.Query()
+		user := url.Get("user")
+		password := url.Get("password")
 
 		if j.VerifyPassword(user, password) {
-			uid := r.Header.Get("uuid")
+			uid := url.Get("uuid")
 			w.WriteHeader(http.StatusOK)
 			err := json.NewEncoder(w).Encode(j.GetStatus(uid))
 			if err != nil {

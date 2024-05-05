@@ -12,7 +12,19 @@
 1. https://localhost/public/querystatuses.html
 1. https://localhost/public/addworker.html
 1. https://localhost/public/stopworker.html
+
+### Example
+
 1. https://localhost/api/examples
+1. https://localhost/api/example/one
+1. https://localhost/api/example/delete
+1. https://localhost/api/example/create
+1. https://localhost/api/example/update
+
+Defaults:
+
+* User and password for basic auth: `test`, `test`
+* `a` and `b` are commands that are supplied in the request - they correspond to the bash scripts in [/go/bin](/go/bin)
 
 ## Rust
 
@@ -28,3 +40,5 @@ Working my way through some Rust and Actix Server documentation.
 2. https://ntex.rs/docs/application
 3. https://hub.qovery.com/guides/tutorial/create-a-blazingly-fast-api-in-rust-part-1/#overview
 4. https://actix.rs/docs/getting-started
+5. https://github.com/tfogo/mongodb-go-tutorial/blob/master/main.go
+6. https://pkg.go.dev/net/url#URL.Query
