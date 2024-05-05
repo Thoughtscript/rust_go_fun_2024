@@ -24,7 +24,7 @@ func GetClient() *mongo.Client {
 
 	var err error
 	
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://testuser:testpass@mongodb:27017"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://testuser:testpass@mongodb:27017/testdatabase"))
 	log.Println("Database connection opened...")
 	if err != nil {
 		log.Fatal(err)

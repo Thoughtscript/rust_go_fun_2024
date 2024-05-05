@@ -16,10 +16,10 @@
 ### Example
 
 1. https://localhost/api/examples
-1. https://localhost/api/example/one
-1. https://localhost/api/example/delete
-1. https://localhost/api/example/create
-1. https://localhost/api/example/update
+1. https://localhost/api/example/one?id=1
+1. https://localhost/api/example/delete?id=1
+1. https://localhost/api/example/create?id=1&name=a&val=a
+1. https://localhost/api/example/update?id=1&name=c&val=c
 
 Defaults:
 
@@ -42,3 +42,4 @@ Working my way through some Rust and Actix Server documentation.
 4. https://actix.rs/docs/getting-started
 5. https://github.com/tfogo/mongodb-go-tutorial/blob/master/main.go
 6. https://pkg.go.dev/net/url#URL.Query
+7. https://stackoverflow.com/questions/55564562/what-is-the-bson-syntax-for-set-in-updateone-for-the-official-mongo-go-driver

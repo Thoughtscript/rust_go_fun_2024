@@ -11,6 +11,8 @@ services:
       - MONGODB_USERNAME=testuser
       - MONGODB_PASSWORD=testpass
       - MONGODB_DATABASE=testdatabase
+    networks:
+      - testnet
 
   go:
     build:
