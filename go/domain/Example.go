@@ -53,7 +53,7 @@ func GetExample(id string) Example {
 	var result Example
 	filter := bson.D{{"id", id}}
 	if err := collection.FindOne(ctx, filter).Decode(&result); err != nil {
-    	log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	return result
