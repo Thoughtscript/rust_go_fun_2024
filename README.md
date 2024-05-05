@@ -4,6 +4,12 @@
 [![](https://img.shields.io/badge/Rust-2021-brown.svg)](https://doc.rust-lang.org/cargo/reference/manifest.html)
 [![](https://img.shields.io/badge/Mongo-db-green.svg)](https://www.mongodb.com/)
 
+Run the following from the root dir:
+
+```bash
+docker-compose up
+```
+
 ## Go
 
 1. https://localhost/public/
