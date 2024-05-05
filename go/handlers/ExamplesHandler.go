@@ -45,7 +45,7 @@ func GetExample(w http.ResponseWriter, r *http.Request) {
 func UpdateExample(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	if r.Method == http.MethodGet {
+	if r.Method == http.MethodPut {
 		w.WriteHeader(http.StatusOK)
 
 		url := r.URL.Query()
@@ -66,7 +66,7 @@ func UpdateExample(w http.ResponseWriter, r *http.Request) {
 func DeleteExample(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	if r.Method == http.MethodGet {
+	if r.Method == http.MethodDelete {
 		w.WriteHeader(http.StatusOK)
 
 		url := r.URL.Query()
@@ -85,7 +85,7 @@ func DeleteExample(w http.ResponseWriter, r *http.Request) {
 func CreateExample(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	if r.Method == http.MethodGet {
+	if r.Method == http.MethodPost {
 		w.WriteHeader(http.StatusOK)
 
 		url := r.URL.Query()
