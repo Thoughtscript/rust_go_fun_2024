@@ -1,14 +1,37 @@
 use actix_web::{web, App, HttpServer};
 
-mod api; // Local files in same dir are imported this way
+// note how each module/directory below has a mod.rs
+// use mod here to load handlers directory in main.rs
+mod handlers; // precisely this syntac - mod module_name; (with a colon!)
+mod db;
+mod domain;
+// define all the modules here
+// elsewhere use crate:: notation
 
+// https://doc.rust-lang.org/reference/attributes.html
+// attribute -metadata
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    //this is app data - not persisted
+    //let db = mongohelpers::get_collection().await;
+    //let db_data = Data::new(db);
+
     HttpServer::new(|| {
         App::new()
-            .service(api::hello)
-            .service(api::echo)
-            .route("/hey", web::get().to(api::manual_hello))
+            //this is app data - not persisted
+            //.app_data(db_data.clone())
+            
+            //examples from actix
+            .service(handlers::basicapi::hello)
+            .service(handlers::basicapi::echo)
+            .route("/hey", web::get().to(handlers::basicapi::manual_hello))
+            
+            // Mongo
+            .service(handlers::mongoapi::create_example)
+            .service(handlers::mongoapi::delete_example)
+            .service(handlers::mongoapi::update_example)
+            .service(handlers::mongoapi::get_example)
+            .service(handlers::mongoapi::get_examples)
     })
     .bind(("0.0.0.0", 8000))?
     .run()

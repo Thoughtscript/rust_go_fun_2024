@@ -21,11 +21,11 @@ docker-compose up
 
 ### Example
 
-1. https://localhost/api/examples
-1. https://localhost/api/example/one?id=1
-1. https://localhost/api/example/delete?id=1
-1. https://localhost/api/example/create?id=1&name=a&val=a
-1. https://localhost/api/example/update?id=1&name=c&val=c
+1. GET https://localhost/api/examples
+1. GET https://localhost/api/example/one?id=1
+1. DELETE https://localhost/api/example/delete?id=1
+1. POST https://localhost/api/example/create?id=1&name=a&val=a
+1. PUT https://localhost/api/example/update?id=1&name=c&val=c
 
 Defaults:
 
@@ -49,3 +49,6 @@ Working my way through some Rust and Actix Server documentation.
 5. https://github.com/tfogo/mongodb-go-tutorial/blob/master/main.go
 6. https://pkg.go.dev/net/url#URL.Query
 7. https://stackoverflow.com/questions/55564562/what-is-the-bson-syntax-for-set-in-updateone-for-the-official-mongo-go-driver
+8. https://github.com/Mr-Malomz/actix-mongo-api/blob/main/src/repository/mongodb_repo.rs
+9. https://crates.io/crates/mongodb
+10. https://github.com/snamiki1212/realworld-v1-rust-actix-web-diesel/blob/main/src/main.rs

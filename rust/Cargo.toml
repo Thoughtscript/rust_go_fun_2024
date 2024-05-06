@@ -6,3 +6,9 @@ edition = '2021' # version of rust to use
 
 [dependencies]
 actix-web = "4"
+
+# https://crates.io/crates/mongodb
+[dependencies.mongodb]
+version = "2.8.2"
+default-features = false
+features = ["async-std-runtime"]
