@@ -19,18 +19,20 @@ docker-compose up
 1. https://localhost/public/addworker.html
 1. https://localhost/public/stopworker.html
 
-### Example
-
-1. GET https://localhost/api/examples
-1. GET https://localhost/api/example/one?id=1
-1. DELETE https://localhost/api/example/delete?id=1
-1. POST https://localhost/api/example/create?id=1&name=a&val=a
-1. PUT https://localhost/api/example/update?id=1&name=c&val=c
-
 Defaults:
 
 * User and password for basic auth: `test`, `test`
 * `a` and `b` are commands that are supplied in the request - they correspond to the bash scripts in [/go/bin](/go/bin)
+
+### Example
+
+Mongo DB:
+
+1. `GET` https://localhost/api/examples
+1. `GET` https://localhost/api/example/one?id=1
+1. `DELETE` https://localhost/api/example/delete?id=1
+1. `POST` https://localhost/api/example/create?id=1&name=a&val=a
+1. `PUT` https://localhost/api/example/update?id=1&name=c&val=c
 
 ## Rust
 
