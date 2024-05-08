@@ -8,30 +8,34 @@ mod domain;
 // define all the modules here
 // elsewhere use crate:: notation
 
+use db::mongohelpers::ExampleMongoHelper;
+use handlers::{basicapi, mongoapi};
+
 // https://doc.rust-lang.org/reference/attributes.html
 // attribute -metadata
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     //this is app data - not persisted
-    //let db = mongohelpers::get_collection().await;
-    //let db_data = Data::new(db);
+    let mdb = ExampleMongoHelper::init().await;
+    let db_data = web::Data::new(mdb);
 
-    HttpServer::new(|| {
+    // https://doc.rust-lang.org/std/keyword.move.html
+    HttpServer::new(move || {
         App::new()
-            //this is app data - not persisted
-            //.app_data(db_data.clone())
+            //this is app data
+            .app_data(db_data.clone())
             
             //examples from actix
-            .service(handlers::basicapi::hello)
-            .service(handlers::basicapi::echo)
-            .route("/hey", web::get().to(handlers::basicapi::manual_hello))
+            .service(basicapi::hello)
+            .service(basicapi::echo)
+            .route("/hey", web::get().to(basicapi::manual_hello))
             
             // Mongo
-            .service(handlers::mongoapi::create_example)
-            .service(handlers::mongoapi::delete_example)
-            .service(handlers::mongoapi::update_example)
-            .service(handlers::mongoapi::get_example)
-            .service(handlers::mongoapi::get_examples)
+            .service(mongoapi::create_example)
+            .service(mongoapi::delete_example)
+            .service(mongoapi::update_example)
+            .service(mongoapi::get_example)
+            .service(mongoapi::get_examples)
     })
     .bind(("0.0.0.0", 8000))?
     .run()

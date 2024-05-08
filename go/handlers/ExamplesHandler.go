@@ -92,6 +92,7 @@ func CreateExample(w http.ResponseWriter, r *http.Request) {
 		id := url.Get("id")
 		name := url.Get("name")
 		val := url.Get("val")
+		// TODO - verify if doesn't exist first - or upsert?
 		results := e.CreateExample(id, name, val)
 
 		err := json.NewEncoder(w).Encode(results)

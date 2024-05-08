@@ -12,12 +12,12 @@ docker-compose up
 
 ## Go
 
-1. https://localhost/public/
-1. https://localhost/public/queryworker.html
-1. https://localhost/public/querystatus.html
-1. https://localhost/public/querystatuses.html
-1. https://localhost/public/addworker.html
-1. https://localhost/public/stopworker.html
+1. https://localhos:443/public/
+1. https://localhost:443/public/queryworker.html
+1. https://localhost:443/public/querystatus.html
+1. https://localhost:443/public/querystatuses.html
+1. https://localhost:443/public/addworker.html
+1. https://localhost:443/public/stopworker.html
 
 Defaults:
 
@@ -28,11 +28,11 @@ Defaults:
 
 Mongo DB:
 
-1. `GET` https://localhost/api/examples
-1. `GET` https://localhost/api/example/one?id=1
-1. `DELETE` https://localhost/api/example/delete?id=1
-1. `POST` https://localhost/api/example/create?id=1&name=a&val=a
-1. `PUT` https://localhost/api/example/update?id=1&name=c&val=c
+1. `GET` https://localhost:443/api/examples
+1. `GET` https://localhost:443/api/example/one?id=1
+1. `DELETE` https://localhost:443/api/example/delete?id=1
+1. `POST` https://localhost:443/api/example/create?id=1&name=a&val=a
+1. `PUT` https://localhost:443/api/example/update?id=1&name=c&val=c
 
 ## Rust
 
@@ -41,6 +41,14 @@ Working my way through some Rust and Actix Server documentation.
 1. http://localhost:8000/
 1. http://localhost:8000/echo
 1. http://localhost:8000/hey
+
+### Example
+
+1. `GET` http://localhost:8000/examples
+1. `GET` http://localhost::8000/example/one?id=1
+1. `DELETE` http://localhost:8000/example/delete?id=1
+1. `POST` http://localhost:8000/example/create?id=1&name=a&val=a
+1. `PUT` http://localhost:8000/example/update?id=1&name=c&val=c
 
 ## Resources and Links
 
@@ -53,4 +61,3 @@ Working my way through some Rust and Actix Server documentation.
 7. https://stackoverflow.com/questions/55564562/what-is-the-bson-syntax-for-set-in-updateone-for-the-official-mongo-go-driver
 8. https://github.com/Mr-Malomz/actix-mongo-api/blob/main/src/repository/mongodb_repo.rs
 9. https://crates.io/crates/mongodb
-10. https://github.com/snamiki1212/realworld-v1-rust-actix-web-diesel/blob/main/src/main.rs

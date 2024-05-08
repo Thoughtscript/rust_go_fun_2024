@@ -1,5 +1,8 @@
+use serde::{Serialize, Deserialize};
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Example {
-    id: String,
-    name: String,
-    val: String,
+    pub id: String,
+    pub name: String,
+    pub val: String,
 }

@@ -6,6 +6,8 @@ edition = '2021' # version of rust to use
 
 [dependencies]
 actix-web = "4"
+futures = "0.3"
+serde = { version = "1.0", features = ["derive"] }
 
 # https://crates.io/crates/mongodb
 [dependencies.mongodb]
