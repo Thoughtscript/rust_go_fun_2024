@@ -71,7 +71,7 @@
         document.getElementById("submit").onclick = function (e) {
           e.preventDefault()
 
-          XHR("https://localhost/api/pool").then(
+          XHR("https://localhost/api/workers").then(
               function (success) {
                 const r = document.getElementById("result")
                 const n = document.createTextNode(success)

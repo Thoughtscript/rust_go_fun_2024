@@ -13,12 +13,16 @@ docker-compose up
 Endpoint testing is supplied through `bash`:
 
 ```bash
-bash test_curl.sh
+bash curl_test_go_mongo.sh
+bash curl_test_rust_actix.sh
+bash curl_test_rust_mongo.sh
+bash curl_test_workers.sh
+# bash curl_test_all.sh
 ```
 
 ## Go
 
-1. https://localhos:443/public/
+1. https://localhost:443/public/
 1. https://localhost:443/public/queryworker.html
 1. https://localhost:443/public/querystatus.html
 1. https://localhost:443/public/querystatuses.html
@@ -29,6 +33,15 @@ Defaults:
 
 * User and password for basic auth: `test`, `test`
 * `a` and `b` are commands that are supplied in the request - they correspond to the bash scripts in [/go/bin](/go/bin)
+* Simple password auth isn't enterprise-grade security (obviously) but is added to demonstrate basic auth checking
+
+### Worker
+
+1. `POST` https://localhost:443/api/create?user=test&password=test&cmd=a&scheduled=2024-05-08T15:04:05Z
+1. `GET` https://localhost:443/api/status?user=test&password=test&uuid=5e44e582-7af4-4751-9dd8-9385c25e1e99
+1. `GET` https://localhost:443/api/workers?user=test&password=test
+1. `GET` https://localhost:443/api/jobs?user=test&password=test&uuid=5e44e582-7af4-4751-9dd8-9385c25e1e99
+1. ` POST` https://localhost:443/api/stop?user=test&password=test&uuid=5e44e582-7af4-4751-9dd8-9385c25e1e99
 
 ### Example
 

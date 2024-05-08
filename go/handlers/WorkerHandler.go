@@ -39,7 +39,7 @@ func CreateJob(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func QueryPool(w http.ResponseWriter, r *http.Request) {
+func QueryWorkers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == http.MethodGet {

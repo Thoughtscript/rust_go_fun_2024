@@ -20,7 +20,7 @@ func main() {
 	// API endpoints
 	http.HandleFunc("/api/create", h.CreateJob)
 	http.HandleFunc("/api/jobs", h.QueryJob)
-	http.HandleFunc("/api/pool", h.QueryPool)
+	http.HandleFunc("/api/workers", h.QueryWorkers)
 	http.HandleFunc("/api/stop", h.StopJob)
 	http.HandleFunc("/api/status", h.QueryStatus)
 
