@@ -10,6 +10,12 @@ Run the following from the root dir:
 docker-compose up
 ```
 
+Endpoint testing is supplied through `bash`:
+
+```bash
+bash test_curl.sh
+```
+
 ## Go
 
 1. https://localhos:443/public/
