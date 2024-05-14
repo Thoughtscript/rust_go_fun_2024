@@ -11,6 +11,9 @@ services:
       - MONGODB_USERNAME=testuser
       - MONGODB_PASSWORD=testpass
       - MONGODB_DATABASE=testdatabase
+      # This is required on Apple Silicon https://github.com/docker/for-mac/issues/6620
+      # https://github.com/bitnami/containers/issues/40947#issuecomment-1927013148
+      - EXPERIMENTAL_DOCKER_DESKTOP_FORCE_QEMU=1
     networks:
       - testnet
 
