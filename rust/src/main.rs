@@ -15,8 +15,8 @@ use handlers::{basicapi, mongoapi};
 // attribute -metadata
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    // this is app data - it actually does persist to Mongo not to just an in-memory store!
-    // you test by creating entities through Rust API then calling through Go
+    // this is app data - it actually persists to Mongo (and not to the in-memory store alone!)
+    // you can test this by creating entities through the Rust API then calling through the Go API
     let mdb = ExampleMongoHelper::init().await;
     let db_data = web::Data::new(mdb);
 
