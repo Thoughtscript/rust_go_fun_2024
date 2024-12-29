@@ -8,6 +8,9 @@ Run the following from the root dir:
 
 ```bash
 docker-compose up
+
+# If using Docker Compose Engine V2:
+docker compose up
 ```
 
 Endpoint testing is supplied through `bash`:
