@@ -1,4 +1,4 @@
-FROM golang:1.22.2
+FROM golang:1.24.0
 
 RUN echo "Creating working dir and copying files"
 RUN mkdir /app
