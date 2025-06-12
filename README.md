@@ -1,6 +1,6 @@
 # rust_go_fun
 
-[![](https://img.shields.io/badge/Go-1.22.2-blue.svg)](https://golang.org/pkg/)
+[![](https://img.shields.io/badge/Go-1.24.0-blue.svg)](https://golang.org/pkg/)
 [![](https://img.shields.io/badge/Rust-2021-brown.svg)](https://doc.rust-lang.org/cargo/reference/manifest.html)
 [![](https://img.shields.io/badge/Mongo-db-green.svg)](https://www.mongodb.com/)
 
