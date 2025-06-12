@@ -67,7 +67,7 @@ Working my way through some Rust and Actix Server documentation.
 ### Example
 
 1. `GET` http://localhost:8000/examples
-1. `GET` http://localhost::8000/example/one?id=1
+1. `GET` http://localhost:8000/example/one?id=1
 1. `DELETE` http://localhost:8000/example/delete?id=1
 1. `POST` http://localhost:8000/example/create?id=1&name=a&val=a
 1. `PUT` http://localhost:8000/example/update?id=1&name=c&val=c

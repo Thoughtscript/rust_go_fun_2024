@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
-	"net/http"
 	e "goserver/domain"
+	"net/http"
 )
 
 func GetExamples(w http.ResponseWriter, r *http.Request) {
@@ -13,8 +13,8 @@ func GetExamples(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 
 		results := e.GetExamples()
+
 		err := json.NewEncoder(w).Encode(results)
-		
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 		}

@@ -13,11 +13,13 @@ var CollectionName = "examples"
 
 var DatabaseName = "testdatabase"
 
+var NotFound = Example{"-1", "notfound", "-1"}
+
 // specify the field name, type, and how the field name gets serialized in JSON
 type Example struct {
-	ID      string `json:id` // not unique
-	Name    string `json:name`
-	Val     string `json:val`
+	ID   string `json:id` // not unique
+	Name string `json:name`
+	Val  string `json:val`
 }
 
 func GetExamples() []Example {
@@ -28,9 +30,11 @@ func GetExamples() []Example {
 	var result []Example = make([]Example, 0)
 
 	// find all without query param - empty bson.D
-	cursor, err := collection.Find(ctx, bson.D{});
+	cursor, err := collection.Find(ctx, bson.D{})
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		log.Println(err)
+		return result
 	}
 
 	// use cursor only for multi element record set
@@ -48,12 +52,14 @@ func GetExample(id string) Example {
 	ctx := context.TODO()
 	client := d.GetClient()
 	collection := client.Database(DatabaseName).Collection(CollectionName)
-	
+
 	// find all without query param - empty bson.D
 	var result Example
 	filter := bson.D{{"id", id}}
 	if err := collection.FindOne(ctx, filter).Decode(&result); err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		log.Println(err)
+		return NotFound
 	}
 
 	return result
@@ -66,9 +72,11 @@ func CreateExample(id string, name string, val string) Example {
 
 	example := Example{id, name, val}
 	// _ suppresses/skips the other returned value - use otherwise Go will complain
-	_ , err := collection.InsertOne(ctx, example)
+	_, err := collection.InsertOne(ctx, example)
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		log.Println(err)
+		return NotFound
 	}
 
 	return example
@@ -78,16 +86,20 @@ func DeleteExample(id string) Example {
 	ctx := context.TODO()
 	client := d.GetClient()
 	collection := client.Database(DatabaseName).Collection(CollectionName)
-	
+
 	var example Example
 	filter := bson.D{{"id", id}}
 	if err := collection.FindOne(ctx, filter).Decode(&example); err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		log.Println(err)
+		return NotFound
 	}
-	
-	_ , err := collection.DeleteOne(ctx, filter)
+
+	_, err := collection.DeleteOne(ctx, filter)
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		log.Println(err)
+		return NotFound
 	}
 
 	return example
@@ -97,24 +109,28 @@ func UpdateExample(id string, name string, val string) Example {
 	ctx := context.TODO()
 	client := d.GetClient()
 	collection := client.Database(DatabaseName).Collection(CollectionName)
-	
+
 	filter := bson.D{{"id", id}}
 	// must use the $ notation here
 	update := bson.D{{"$set",
 		bson.D{
-			{ "name", name }, 
-			{ "val", val },
+			{"name", name},
+			{"val", val},
 		},
 	}}
 
-	_ , err := collection.UpdateOne(ctx, filter, update)
+	_, err := collection.UpdateOne(ctx, filter, update)
 	if err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		log.Println(err)
+		return NotFound
 	}
 
 	var example Example
 	if err := collection.FindOne(ctx, filter).Decode(&example); err != nil {
-		log.Fatal(err)
+		// log.Fatal(err)
+		log.Println(err)
+		return NotFound
 	}
 
 	return example
