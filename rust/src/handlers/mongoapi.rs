@@ -21,7 +21,9 @@ struct ExampleParams {
 
 #[get("/examples")]
 pub async fn get_examples(db: Data<ExampleMongoHelper>) -> HttpResponse {
-    let cursor = db.collection.find(None, None).await.expect("error");
+    let filter = doc! { };
+
+    let cursor = db.collection.find(filter).await.expect("error");
 
     // https://doc.rust-lang.org/std/vec/struct.Vec.html
     let results : Vec<Example> = cursor.try_collect().await.unwrap_or_else(|_| vec![]);
@@ -36,7 +38,7 @@ pub async fn get_example(db: Data<ExampleMongoHelper>, params: Query<IdParam>) -
     
     let filter = doc! {"id": id};
 
-    let example = db.collection.find_one(filter, None).await.expect("error");
+    let example = db.collection.find_one(filter).await.expect("error");
 
     HttpResponse::Ok().json(example)
 }
@@ -47,7 +49,7 @@ pub async fn delete_example(db: Data<ExampleMongoHelper>, params: Query<IdParam>
 
     let filter = doc! {"id": id};
 
-    let example = db.collection.delete_one(filter, None).await.expect("error");
+    let example = db.collection.delete_one(filter).await.expect("error");
 
     HttpResponse::Ok().json(example)
 }
@@ -65,7 +67,7 @@ pub async fn create_example(db: Data<ExampleMongoHelper>, params: Query<ExampleP
     };
 
     // TODO - verify if doesn't exist first - or upsert?
-    let result = db.collection.insert_one(example, None).await.expect("error");
+    let result = db.collection.insert_one(example).await.expect("error");
 
     HttpResponse::Ok().json(result)
 }
@@ -87,8 +89,7 @@ pub async fn update_example(db: Data<ExampleMongoHelper>, params: Query<ExampleP
             },
     };
 
-    let example = db.collection.update_one(filter, update, None).await.expect("error");
+    let example = db.collection.update_one(filter, update).await.expect("error");
 
     HttpResponse::Ok().json(example)
 }
-
