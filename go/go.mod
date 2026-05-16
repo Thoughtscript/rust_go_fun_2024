@@ -1,6 +1,6 @@
 module goserver
 
-go 1.24.0
+go 1.26.3
 
 require (
 	github.com/gofrs/uuid v4.4.0+incompatible

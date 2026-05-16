@@ -1,6 +1,6 @@
 services:
   mongodb:
-    image: bitnami/mongodb:7.0.9
+    image: bitnami/mongodb:latest
     ports:
       - "27017:27017"
     volumes:
