@@ -13,8 +13,6 @@ docker-compose up
 docker compose up
 ```
 
-MongoDB creates the application user from `mongo/docker-entrypoint-initdb.d/init.js` only when initializing an empty data volume. If `mongodb_data` was initialized before that script was mounted correctly, the script will not run again; back up any data before recreating the volume.
-
 Endpoint testing is supplied through `bash`:
 
 ```bash
