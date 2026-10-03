@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/badge/Go-1.26.3-blue.svg)](https://golang.org/pkg/)
 [![](https://img.shields.io/badge/Rust-2021-brown.svg)](https://doc.rust-lang.org/cargo/reference/manifest.html)
-[![](https://img.shields.io/badge/Mongo-db-green.svg)](https://www.mongodb.com/)
+[![](https://img.shields.io/badge/Mongo-7.0.43-green.svg)](https://hub.docker.com/_/mongo)
 
 Run the following from the root dir:
 
@@ -12,6 +12,8 @@ docker-compose up
 # If using Docker Compose Engine V2:
 docker compose up
 ```
+
+MongoDB creates the application user from `mongo/docker-entrypoint-initdb.d/init.js` only when initializing an empty data volume. If `mongodb_data` was initialized before that script was mounted correctly, the script will not run again; back up any data before recreating the volume.
 
 Endpoint testing is supplied through `bash`:
 

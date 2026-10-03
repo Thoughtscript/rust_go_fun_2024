@@ -24,7 +24,8 @@ func GetClient() *mongo.Client {
 
 	var err error
 
-	c, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://testuser:testpass@mongodb:27017/testdatabase"))
+	var connectionURI = "mongodb://testuser:testpass@mongodb:27017/testdatabase?authSource=testdatabase"
+	c, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(connectionURI))
 	log.Println("Database connection opened...")
 	if err != nil {
 		log.Fatal(err)

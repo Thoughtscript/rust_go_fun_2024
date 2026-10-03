@@ -1,19 +1,19 @@
 services:
   mongodb:
-    image: bitnami/mongodb:latest
+    build:
+      context: ./mongo
+      dockerfile: dockerfile
     ports:
       - "27017:27017"
     volumes:
-      - 'mongodb_data:/bitnami/mongodb'
+       # The official docker image requires a certain way for initial collections, users are created
+       # Must be an absolute path
+      - ./mongo/docker-entrypoint-initdb.d/init.js:/docker-entrypoint-initdb.d/init.js:ro
+      - 'mongodb_data:/data/db'
     environment:
-      - MONGODB_ROOT_USER=rootuser
-      - MONGODB_ROOT_PASSWORD=rootpass
-      - MONGODB_USERNAME=testuser
-      - MONGODB_PASSWORD=testpass
-      - MONGODB_DATABASE=testdatabase
-      # This is required on Apple Silicon https://github.com/docker/for-mac/issues/6620
-      # https://github.com/bitnami/containers/issues/40947#issuecomment-1927013148
-      - EXPERIMENTAL_DOCKER_DESKTOP_FORCE_QEMU=1
+      - MONGO_INITDB_ROOT_USERNAME=rootuser
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+      - MONGO_INITDB_DATABASE=testdatabase
     networks:
       - testnet
 
