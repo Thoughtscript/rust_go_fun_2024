@@ -24,7 +24,7 @@ impl ExampleMongoHelper {
         let credential = Credential::builder()
             .username(Some("testuser".to_owned()))
             .password(Some("testpass".to_owned()))
-            .source(Some("testdatabase".to_owned()))
+            .source(Some("testdatabase".to_owned())) // authSource and DB in one setting
             .build();
 
         client_options.credential = Some(credential);
